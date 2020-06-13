@@ -1,2 +1,4 @@
 # Training
 Training for Power outage. 
+The goal of this web application is to help train the apprentices on how to deal with power outages. Since the professionals have to put their A game on and make Shit happen when the power is out there is no time to train the rookies. This is our way to help speed up the process without the rookies having to spend years just watching how it is done.This should help keep them safe and the people around them safe. As well as help them grow with the understanding of how the circuit works in their area and how to most effectively troubleshoot a power outage.
+The plan is to start out with one style of lines connected then add the others as the proof of concept works. As of now it will be a web app running babylon.js game engine. If it has positive feedback and more time is available then there may be an option to upgrade to unity.  
