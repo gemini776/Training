@@ -1,0 +1,40 @@
+<!Doctype html>
+<html>
+    <head>    
+        <meta charset = 'UTF-8'>
+        <title BabylonJS Game></title>
+        <script scr="http://cdn.babylonjs.com/2-4/babylon.max.js"></script>
+        <style> 
+            #canvas{
+                width: 100%;
+                height: 100%;
+            }
+        </style>
+    </head>
+
+
+    <body>
+        <canvas id = "canvas"></canvas>
+        <script>
+            window.addEventListener("DOMContentLoaded",function (){
+                var canvas =document.getElementById("canvas");
+                var engine = new BABYLON.Engine(canvas,true);
+
+                var createScene = function(){
+                    var scene = new BABYLON.Scene(engine);
+                    scene.clearColor = new BABYLON.Color3.white();
+                    var camera = new BABYLON.FreeCamera("camera1",
+                        new BABYLON.Vector3(0,0,-10),scene);
+                    camera.setTarget(BABYLON.Vector3.Zero()); 
+                    var box = BABYLON.Mesh.CreatBox("Box",4.0,scene);
+                    return scene;
+
+                }
+                var scene = createScene();
+                engine.runRenderLoop(function(){
+                    scene.render();
+                });
+            });
+        </script>
+    </body>
+</html>
