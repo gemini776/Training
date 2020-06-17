@@ -1,10 +1,15 @@
 <!-- This will be my note to reference different thing and how they work -->
+<!--added ground. it is white need to learn how to chand color 
+get better texture and add height.
+also need to try different camera angles to actuall see the ground. -->
+
+
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-        <title>Babylon Template</title>
+        <title>Babylon Test page</title>
 
         <style>
             html, body {
@@ -48,7 +53,12 @@
             // Add lights to the scene
             var light1 = new BABYLON.HemisphericLight("light1", new BABYLON.Vector3(1, 1, 0), scene);
             var light2 = new BABYLON.PointLight("light2", new BABYLON.Vector3(0, 1, -1), scene);
+            
+            
+            var myGround = BABYLON.MeshBuilder.CreateGround("myGround", {width: 60, height: -1, subdivisions: 4}, scene);
+           // the ground is white. need to learn how to change color and add height and texture.
 
+           
             // Add and manipulate meshes in the scene
             var sphere = BABYLON.MeshBuilder.CreateSphere("sphere", {diameter:2}, scene);
 
