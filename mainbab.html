@@ -46,9 +46,7 @@ also need to try different camera angles to actuall see the ground. -->
             // Create the scene space
             var scene = new BABYLON.Scene(engine);
 
-            // Add a camera to the scene and attach it to the canvas
-            var camera = new BABYLON.ArcRotateCamera("Camera", Math.PI / 2, Math.PI / 2, 2, new BABYLON.Vector3(0,0,5), scene);
-            camera.attachControl(canvas, true);
+     
 
             // Add lights to the scene
             var light1 = new BABYLON.HemisphericLight("light1", new BABYLON.Vector3(1, 1, 0), scene);
@@ -61,6 +59,30 @@ also need to try different camera angles to actuall see the ground. -->
            
             // Add and manipulate meshes in the scene
             var sphere = BABYLON.MeshBuilder.CreateSphere("sphere", {diameter:2}, scene);
+
+
+                   // create Gravity
+                   scene.gravity = new BABYLON.Vector3(0, -9.81, 0);
+
+
+// Add a camera to the scene and attach it to the canvas
+var camera = new BABYLON.ArcRotateCamera("Camera", Math.PI / 2, Math.PI / 2, 2, new BABYLON.Vector3(0,0,5), scene);
+camera.attachControl(canvas, true);
+
+// add gravity to the camera
+camera.applyGravity = true;
+
+//Set the ellipsoid around the camera (e.g. your player's size)
+camera.ellipsoid = new BABYLON.Vector3(1, 1, 1);
+
+// Enable Collisions
+scene.collisionsEnabled = true;
+camera.checkCollisions = true;
+
+
+// set what the collisions should look out for
+ground.checkCollisions = true;
+sphere.checkCollisions = true;
 
             return scene;
         };
