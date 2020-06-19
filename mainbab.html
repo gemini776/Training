@@ -1,7 +1,10 @@
-<!-- This will be my note to reference different thing and how they work -->
-<!--added ground. it is white need to learn how to chand color 
-get better texture and add height.
-also need to try different camera angles to actuall see the ground. -->
+<!--The shortcut keys to open this page is ctrl alt o not zero. -->
+<!--Also remember it is quicker to refresh the page after changes then reopen-->
+<!--This is the just a start. still need to work on setting the ground gravity and pick what camera to use-->
+<!--The arrow keys work to move everyting on the screen but I think the arc camera may not be what is needed.-->
+<!--the wheel on the mouse zooms in and out the arrow keys move up and down left right.-->
+
+
 
 
 <!DOCTYPE html>
@@ -9,7 +12,7 @@ also need to try different camera angles to actuall see the ground. -->
 
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-        <title>Babylon Test page</title>
+        <title>Babylon Template</title>
 
         <style>
             html, body {
@@ -46,43 +49,37 @@ also need to try different camera angles to actuall see the ground. -->
             // Create the scene space
             var scene = new BABYLON.Scene(engine);
 
-     
+            //This should create gravity. 
+            scene.gravity = new BABYLON.Vector3(0, -9.81, 0);
+
+            
+
+            // Add a camera to the scene and attach it to the canvas
+            var camera = new BABYLON.ArcRotateCamera("Camera", Math.PI / 2, Math.PI / 2, 2, new BABYLON.Vector3(0,0,5), scene);
+            camera.attachControl(canvas, true);
+
+            //add gravity to the camera
+            camera.applyGravity = true;
+
+            // Creates a space around the camera aka user.
+            camera.ellipsoid = new BABYLON.Vector3(1, 1, 1);
+
+            // Enable Collisions so we dont walk through walls 
+            scene.collisionsEnabled = true;
+            camera.checkCollisions = true;
+
+            //List of what the collision will catch
+
+            //THIS IS BROKEN. NEED TO ADD GROUND AND SEE WHY CHECK COLLISION IS UNDEFINED. 
+            //ground.checkCollisions = true;
+            //sphere.checkCollisions = true;
 
             // Add lights to the scene
             var light1 = new BABYLON.HemisphericLight("light1", new BABYLON.Vector3(1, 1, 0), scene);
             var light2 = new BABYLON.PointLight("light2", new BABYLON.Vector3(0, 1, -1), scene);
-            
-            
-            var myGround = BABYLON.MeshBuilder.CreateGround("myGround", {width: 60, height: -1, subdivisions: 4}, scene);
-           // the ground is white. need to learn how to change color and add height and texture.
 
-           
             // Add and manipulate meshes in the scene
             var sphere = BABYLON.MeshBuilder.CreateSphere("sphere", {diameter:2}, scene);
-
-
-                   // create Gravity
-                   scene.gravity = new BABYLON.Vector3(0, -9.81, 0);
-
-
-// Add a camera to the scene and attach it to the canvas
-var camera = new BABYLON.ArcRotateCamera("Camera", Math.PI / 2, Math.PI / 2, 2, new BABYLON.Vector3(0,0,5), scene);
-camera.attachControl(canvas, true);
-
-// add gravity to the camera
-camera.applyGravity = true;
-
-//Set the ellipsoid around the camera (e.g. your player's size)
-camera.ellipsoid = new BABYLON.Vector3(1, 1, 1);
-
-// Enable Collisions
-scene.collisionsEnabled = true;
-camera.checkCollisions = true;
-
-
-// set what the collisions should look out for
-ground.checkCollisions = true;
-sphere.checkCollisions = true;
 
             return scene;
         };
